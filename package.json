@@ -8,10 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git+https://github.com/ItzelMB/GDL002-md-links.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "ItzelMB",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ItzelMB/GDL002-md-links.git/issues"
+  },
+  "homepage": "https://github.com/ItzelMB/GDL002-md-links#readme",
   "devDependencies": {
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",

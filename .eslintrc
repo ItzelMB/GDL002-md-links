@@ -11,6 +11,16 @@
     "prettier"
   ],
   "globals": {
-    "module": false
+    "module": false,
+    "readdirSync": false,
+    "readFileSync": false,
+    "describe": false,
+    "it" : false,
+    "expect" : false,
+    "require" : false
+  },
+  "rules": {
+    "no-console": 0,
+    "semi": 2
   }
 }

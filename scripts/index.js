@@ -68,13 +68,7 @@ module.exports = {
 
 module.exports = {
 
-  pathExist: function (pathfile) {
-    if(pathfile == undefined){
-      return false;
-    } else {
-      return true;
-    }
-  },
+  
 };
 
 

@@ -17,7 +17,8 @@
     "describe": false,
     "it" : false,
     "expect" : false,
-    "require" : false
+    "require" : false,
+    "fs": false
   },
   "rules": {
     "no-console": 0,

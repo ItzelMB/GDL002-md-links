@@ -1,6 +1,8 @@
 const mdLinks = require('../scripts/index.js');
 const index = require('../scripts/index.js');
 
+
+
 describe('mdLinks', () => {
   it('should be a function', () => {
     expect(typeof(mdLinks)).toBe('function');

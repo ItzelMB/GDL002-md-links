@@ -1,9 +1,10 @@
 {
   "name": "md-links",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "scripts": {
     "lint": "eslint ./",
     "lint:fix": "eslint ./ --fix",
+    "start": "node pathStuffs.js",
     "test": "jest"
   },
   "repository": {
@@ -14,6 +15,9 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ItzelMB/GDL002-md-links.git/issues"
+  },
+  "bin": {
+    "md-links" : "./index.js"
   },
   "homepage": "https://github.com/ItzelMB/GDL002-md-links#readme",
   "devDependencies": {

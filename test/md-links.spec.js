@@ -1,6 +1,6 @@
 //const mdLinks = require('../scripts/index.js');
 const index = require('../scripts/index.js');
-const linksArr = require('./mocks/links-array.json');
+//const linksArr = require('./mocks/links-array.json');
 
 
 //Exist path test

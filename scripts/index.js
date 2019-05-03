@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const [,, ...args] = process.argv
+const [,, ...args] = process.argv;
 console.log(`Inserted path:  ${args}`);
 const fs = require('fs');
 const http = require('http');
@@ -72,6 +72,7 @@ const validateUrl = (link) => {
 
 //Get from a directory or a file
 const readPath = (directory) => {
+  directory = directory.replace(/\\/g,'/').replace('C:','').replace('c:','');
   if (directory.includes('.')) {
     if(directory.includes('.md')){
       return links(directory).forEach(link => validateUrl(link));
@@ -86,14 +87,18 @@ const readPath = (directory) => {
       userPath.forEach(file => {
         //console.log(file);
         if (file.includes('.md')) {
-          //console.log(directory + '\\' + file);
-          return links(directory + '\\' + file).forEach(link => validateUrl(link));
+          console.log(directory + '/' + file);
+          //return links(directory + '/' + file).forEach(link => validateUrl(link));
+          return links(directory + '/' + file).forEach(link => validateUrl(link));
         }
       });
     }
   }
 };
 //readPath('C:\\Users\\Itina\\Documents\\LABORATORIA\\Proyectos-GDL02\\Proyecto-05\\GDL002-md-links\\README.md');
+// /home/laboratoria-168/Documentos/ItzelMB/Proyects/Proyect-05/GDL002-md-links
+
+
 
 //Call functions from CLI
 const insertUserPath = () => {

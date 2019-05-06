@@ -1,10 +1,11 @@
 {
-  "name": "md-links",
+  "name": "md-links-kais",
   "version": "1.0.0",
+  "description": "This library reads and analyzes files in Markdown format to verify the links they contain and to report some statistics.",
   "scripts": {
     "lint": "eslint ./",
     "lint:fix": "eslint ./ --fix",
-    "start": "node pathStuffs.js",
+    "start": "md-links.js",
     "test": "jest"
   },
   "repository": {
@@ -17,7 +18,7 @@
     "url": "https://github.com/ItzelMB/GDL002-md-links.git/issues"
   },
   "bin": {
-    "md-links" : "./index.js"
+    "md-links": "md-links"
   },
   "homepage": "https://github.com/ItzelMB/GDL002-md-links#readme",
   "devDependencies": {

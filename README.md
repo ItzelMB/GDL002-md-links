@@ -1,7 +1,7 @@
 # Md-links
 
 ![Version](https://img.shields.io/badge/version-1.0.0-yellowgreen.svg)
-![License](https://img.shields.io/badge/version-MIT-yellow.svg)
+![License](https://img.shields.io/badge/license-MIT-yellow.svg)
 
 This is a library for developers, it helps to read and analyze files in Markdown format, also allow verify the links they contain and to report some statistics.
 

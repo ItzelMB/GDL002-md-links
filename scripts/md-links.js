@@ -7,6 +7,7 @@ console.log(`Inserted path:  ${args}`);
 const fs = require('fs');
 const http = require('http');
 const https = require('https');
+const colors = require('colors');
 
 
 //Verify existing path
@@ -54,18 +55,18 @@ const validateUrl = (link) => {
         https.get(link, (res) => {
             const { statusCode } = res;
             if (statusCode == 200) {
-                console.log('OK' + '\t||  ' + link);
+                console.log('StatCode '.green + colors.green(statusCode) + '  ' + '✔ '.green + ' OK '.bold.bgGreen + '\t||  ' + link);
             } else {
-                console.log('FAIL' + '\t||  ' + link);
+                console.log('StatCode '.red + colors.red(statusCode) +  '  ' + '✖ '.red + ' FAIL '.bold.bgRed + '\t||  '.red + colors.red(link));
             }
         });
     } else {
         http.get(link, (res) => {
             const { statusCode } = res;
             if (statusCode == 200) {
-                console.log('OK' + '\t||  ' + link);
+                console.log('StatCode '.green + colors.green(statusCode) +  '  '  + '✔ '.green + ' OK '.bold.bgGreen + '\t||  ' + link);
             } else {
-                console.log('FAIL' + '\t||  ' + link);
+                console.log('StatCode '.red + colors.red(statusCode) +  '  '  + '✖ '.red + ' FAIL '.bold.bgRed + '\t||  '.red + colors.red(link));
             }
         });
     }
@@ -82,31 +83,38 @@ const getStatistics = (arrLinksIterated) => {
 //Get from a directory or a file
 const readPath = (directory) => {
     directory = directory.replace(/\\/g, '/').replace('C:', '').replace('c:', '');
+
+    //Read from a file
     if (directory.includes('.')) {
         if (directory.includes('.md')) {
-            let fileLinks = links(directory);
-            return fileLinks.forEach(link => validateUrl(link));
+            let folderLinks = links(directory);
+            return folderLinks.forEach(link => validateUrl(link));
         } else {
-            console.log('This is not a md file');
-            return 'This is not a md file';
+            console.log('There are not md files');
+            return 'There are not md files';
         }
+
+    //Read from a directory
     } else if (!directory.includes('.')) {
-        let userPath = fs.readdirSync(directory);
-        //console.log(userPath);
-        if (userPath !== null) {
-            userPath.forEach(file => {
+        let filePath = fs.readdirSync(directory);
+        //console.log(filePath);
+        if (filePath !== null) {
+            filePath.forEach(file => {
                 //console.log(file);
                 if (file.includes('.md')) {
                     console.log(directory + '/' + file);
                     let folderLinks = links(directory + '/' + file);
                     return folderLinks.forEach(link => validateUrl(link));
+                } else {
+                    console.log('There is not a md file');
+                    return 'There is not a md file';
                 }
             });
         }
     }
 };
 //readPath('C:\\Users\\Itina\\Documents\\LABORATORIA\\Proyectos-GDL02\\Proyecto-05\\GDL002-md-links\\README.md');
-// /home/laboratoria-168/Documentos/ItzelMB/Proyects/Proyect-05/GDL002-md-links
+// readPath('/home/laboratoria-168/Documentos/ItzelMB/Proyects/Proyect-05/GDL002-md-links')
 
 //Call functions from CLI
 const insertUserPath = () => {
@@ -122,8 +130,3 @@ module.exports = {
    // getStatistics,
     insertUserPath
 };
-
-
-/*
-'C:\\Users\\Itina\\Documents\\LABORATORIA\\Proyectos-GDL02\\Proyecto-05\\GDL002-md-links\\README.md'
-*/

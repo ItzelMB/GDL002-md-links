@@ -9,7 +9,8 @@ This is a library for developers, it helps to read and analyze files in Markdown
 ![md-links-PT1](description/md-links-PT1-eng.jpeg)
 ![md-links-PT2](description/md-links-PT2-eng.jpeg)
 ## Installation
-
+- [Colors](https://www.npmjs.com/package/colors) to better view
+>$npm i colors
 ## Methods / Examples
 
 

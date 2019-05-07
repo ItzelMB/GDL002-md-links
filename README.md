@@ -7,19 +7,37 @@
 This is a library for developers, it helps to read and analyze files in Markdown format, also allow verify the links they contain and to report some statistics.
 
 ## Flowcharts
+These flowcharts show the behaviour in the construction of md-links.
+
 ### Default behaviour
+You can expect as a default behaviour the result of all the valid and broken links in your md file.
+
 ![md-links-PT1](description/md-links-PT1-eng.jpeg)
 
 ### Options behaviour
+You can add options to decide what to do: validate links, get statistics or both of them at the same time.
+
 ![md-links-PT2](description/md-links-PT2-eng.jpeg)
 
-## Installation
+## Requirements
+- Node.js
+
 - Install [Colors](https://www.npmjs.com/package/colors) to better view
 >$npm i colors
 
+## Usage
+You may insert the name of your file with extension md or a directory that contains md files. Md-links can read windows and linux paths.
+If you install "colors" as a result you will see in green color de status code of the link and the "OK" word for valid links. For broken links you will see in red color de status code, also in red the word "FAIL" and the broken link, but if you don't you would see the same information without colors.
+
+```sh
+$node md-links <path>
+```
+
+![result1](description/md-links-results.png)
+![result1](description/md-links-results2.png)
 
 ## README test
-
+This is a test README.md
 
 
 ```sh

@@ -116,7 +116,7 @@ const readPath = (directory) => {
                     console.log(directory + '/' + file);
                     folderLinks = links(directory + '/' + file);
                     folderLinks.forEach(link => validateUrl(link));
-                    getStatistics();
+                    //getStatistics();
                 } else {
                     console.log('There is not a md file');
                     return 'There is not a md file';
@@ -126,7 +126,7 @@ const readPath = (directory) => {
     }
 };
 //readPath('C:\\Users\\Itina\\Documents\\LABORATORIA\\Proyectos-GDL02\\Proyecto-05\\GDL002-md-links\\README.md');
-// readPath('/home/laboratoria-168/Documentos/ItzelMB/Proyects/Proyect-05/GDL002-md-links')
+//readPath('/home/laboratoria-168/Documentos/ItzelMB/Proyects/Proyect-05/GDL002-md-links/README.md');
 
 //Call functions from CLI
 const insertUserPath = () => {

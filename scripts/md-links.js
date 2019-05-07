@@ -10,6 +10,10 @@ const https = require('https');
 const colors = require('colors');
 
 
+let validCount;
+let invalidCount;
+let folderLinks = [];
+
 //Verify existing path
 let pathExist = (currentPath) => {
     if (currentPath == undefined) {
@@ -55,8 +59,10 @@ const validateUrl = (link) => {
         https.get(link, (res) => {
             const { statusCode } = res;
             if (statusCode == 200) {
+                validCount++;
                 console.log('StatCode '.green + colors.green(statusCode) + '  ' + '✔ '.green + ' OK '.bold.bgGreen + '\t||  ' + link);
             } else {
+                invalidCount++;
                 console.log('StatCode '.red + colors.red(statusCode) +  '  ' + '✖ '.red + ' FAIL '.bold.bgRed + '\t||  '.red + colors.red(link));
             }
         });
@@ -64,8 +70,10 @@ const validateUrl = (link) => {
         http.get(link, (res) => {
             const { statusCode } = res;
             if (statusCode == 200) {
+                validCount++;
                 console.log('StatCode '.green + colors.green(statusCode) +  '  '  + '✔ '.green + ' OK '.bold.bgGreen + '\t||  ' + link);
             } else {
+                invalidCount++;
                 console.log('StatCode '.red + colors.red(statusCode) +  '  '  + '✖ '.red + ' FAIL '.bold.bgRed + '\t||  '.red + colors.red(link));
             }
         });
@@ -73,22 +81,25 @@ const validateUrl = (link) => {
 };
 //validateUrl();
 
-/*
-//Get statistics
-const getStatistics = (arrLinksIterated) => {
 
+//Get statistics
+const getStatistics = () => {
+    console.log('Unique: ' + validCount);
+    console.log('Broken: ' + invalidCount);
+    console.log('Total: ' + folderLinks.length);
 };
-*/
 
 //Get from a directory or a file
 const readPath = (directory) => {
     directory = directory.replace(/\\/g, '/').replace('C:', '').replace('c:', '');
-
+    validCount = 0;
+    invalidCount = 0;
     //Read from a file
     if (directory.includes('.')) {
         if (directory.includes('.md')) {
-            let folderLinks = links(directory);
-            return folderLinks.forEach(link => validateUrl(link));
+            folderLinks = links(directory);
+            folderLinks.forEach(link =>  validateUrl(link));
+            getStatistics();          
         } else {
             console.log('There are not md files');
             return 'There are not md files';
@@ -103,8 +114,9 @@ const readPath = (directory) => {
                 //console.log(file);
                 if (file.includes('.md')) {
                     console.log(directory + '/' + file);
-                    let folderLinks = links(directory + '/' + file);
-                    return folderLinks.forEach(link => validateUrl(link));
+                    folderLinks = links(directory + '/' + file);
+                    folderLinks.forEach(link => validateUrl(link));
+                    getStatistics();
                 } else {
                     console.log('There is not a md file');
                     return 'There is not a md file';
@@ -120,13 +132,12 @@ const readPath = (directory) => {
 const insertUserPath = () => {
     readPath(args.toString());
 };
-
 insertUserPath();
 
 module.exports = {
     pathExist,
     readPath,
     validateUrl,
-   // getStatistics,
+    getStatistics,
     insertUserPath
 };

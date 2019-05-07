@@ -12,7 +12,7 @@ describe('pathExist', () => {
     expect(mdLinks.pathExist()).toBe(false);
   });
 });
- /*
+ 
 //Return links arr
 describe('readPath', () => {
   it('should return a message: \'This is not a md file\'', () => {
@@ -23,7 +23,7 @@ describe('readPath', () => {
      expect(index.readPath('C:\\Users\\Itina\\Documents\\LABORATORIA\\Proyectos-GDL02\\Proyecto-05\\GDL002-md-links\\README.md')).toEqual(linksArr.arr);
    });
 });
-*/
+
 
 /*
 describe('mdLinks', () => {

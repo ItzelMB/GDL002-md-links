@@ -18,7 +18,8 @@
     "it" : false,
     "expect" : false,
     "require" : false,
-    "fs": false
+    "fs": false,
+    "process": false
   },
   "rules": {
     "no-console": 0,
